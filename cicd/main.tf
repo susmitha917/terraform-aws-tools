@@ -35,7 +35,7 @@ module "nexus" {
   name = "nexus"
 
   instance_type          = "t3.medium"
-  vpc_security_group_ids = ["sg-0fea5e49e962e81c9"]
+  vpc_security_group_ids = ["sg-0f43d0bd748c5c8ee"]
   # convert StringList to list and get first element
   subnet_id = "subnet-0a5e51f2c3446feea"
   ami = data.aws_ami.nexus_ami_info.id
@@ -49,6 +49,14 @@ module "nexus" {
   tags = {
     Name = "nexus"
   }
+}
+
+resource "aws_key_pair" "tool" {
+  key_name   = "tool"
+  # you can paste the public key directly like this
+  #public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL6ONJth+DzeXbU3oGATxjVmoRjPepdl7sBuPzzQT2Nc sivak@BOOK-I6CR3LQ85Q"
+  public_key = file("~/.ssh/tool.pub")
+  # ~ means windows home directory
 }
 
 
