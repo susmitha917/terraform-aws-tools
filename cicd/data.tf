@@ -26,7 +26,7 @@ data "aws_ami" "nexus_ami_info" {
 
     filter {
         name   = "name"
-        values = ["Centos-8-DevOps-Practice-*"]
+        values = ["Centos-8-DevOps-Practice"]
     }
 
     filter {
